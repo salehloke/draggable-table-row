@@ -8,6 +8,7 @@ import { HelloComponent } from './hello.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CommonModule } from '@angular/common';
 import { TableComponent } from './table/table.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { TableComponent } from './table/table.component';
     DragDropModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    NgbModule,
   ],
   declarations: [AppComponent, HelloComponent, TableComponent],
   bootstrap: [AppComponent],
