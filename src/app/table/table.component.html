@@ -14,22 +14,18 @@
       cdkDropList
       (cdkDropListDropped)="onRowDropped($event)"
     >
-      <ng-container></ng-container>
       <!-- when using form array, it need to be nested inside form group to be able to access through template using formArrayName -->
       <ng-container
-        cdkDrag
         formArrayName="dynamicRowList"
-        *ngFor="let rowData of dynamicRowList.value; let i = index"
+        *ngFor="let rowData of dynamicRowList.controls; let i = index"
       >
         <!-- {{ rowData | json }} -->
         <!-- form group name is the index per each iteration -->
-        <tr [formGroupName]="i">
-          <ng-container>
-            <th scope="row">{{ rowData.rowNo }}</th>
-            <td>{{ rowData.first }}</td>
-            <td>{{ rowData.last }}</td>
-            <td>{{ rowData.handle }}</td>
-          </ng-container>
+        <tr cdkDragLockAxis="y" class="draggable" cdkDrag [formGroupName]="i">
+          <th scope="row">{{ rowData.value.rowNo }}</th>
+          <td scope="row">{{ rowData.value.first }}</td>
+          <td>{{ rowData.value.last }}</td>
+          <td>{{ rowData.value.handle }}</td>
         </tr>
       </ng-container>
     </tbody>
