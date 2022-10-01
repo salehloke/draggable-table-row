@@ -15,11 +15,14 @@
       }}
       <ng-container
         formArrayName="dynamicRowList"
-        *ngFor="let row of dynamicRowList.value; let i = index"
+        *ngFor="let rowData of dynamicRowList.value; let i = index"
       >
         <tr cdkDrag>
-          <th scope="row">{{ row.rowNo }}</th>
-          <td>{{ row.first }}</td>
+          {{
+            rowData | json
+          }}
+          <th scope="row">{{ rowData.rowNo }}</th>
+          <td>{{ rowData.first }}</td>
           <td>Otto</td>
           <td>@mdo</td>
         </tr>
