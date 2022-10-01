@@ -36,39 +36,6 @@
         </tr>
       </ng-container>
     </tbody>
-    <tbody formArrayName="dynamicRowList">
-      <!-- when using form array, it need to be nested inside form group to be able to access through template using formArrayName -->
-      <!-- <ng-container> -->
-      <!-- form group name is the index per each iteration -->
-      <tr
-        *ngFor="let rowData of dynamicRowList.controls; let i = index"
-        cdkDragLockAxis="y"
-        class="example-box"
-        cdkDrag
-      >
-        {{
-          rowData | json
-        }}
-        <form [formGroupName]="i">
-          <th>
-            <div class="drag-handle">
-              <!-- <ng-container [ngTemplateOutlet]="dragHandleTmpl"> </ng-container> -->
-            </div>
-            {{ rowData.value.rowNo }}
-          </th>
-          <td>{{ rowData.value.first }}</td>
-          <td>{{ rowData.value.last }}</td>
-          <td>{{ rowData.value.handle }}</td>
-        </form>
-      </tr>
-      <!-- </ng-container> -->
-    </tbody>
-    <div
-      [formGroup]="mainForm"
-      cdkDropList
-      class="example-list"
-      (cdkDropListDropped)="onRowDropped($event)"
-    ></div>
   </table>
 </div>
 
