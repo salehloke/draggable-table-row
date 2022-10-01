@@ -3,10 +3,18 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col" class="text-center">#</th>
+        <th scope="col" class="text-center">Currency From</th>
+        <th scope="col" class="text-center">Currency To</th>
+        <th scope="col" class="text-center">Current Hour TR Rate</th>
+        <th scope="col" class="text-center">Low / Hi cost</th>
+        <th scope="col" class="text-center">WACC</th>
+        <th scope="col" class="text-center">Breakeven</th>
+        <th scope="col" class="text-center">Rules</th>
+        <th scope="col" class="text-center">Competitor</th>
+        <th scope="col" class="text-center">Prev. Rate</th>
+        <th scope="col" class="text-center">Quoted Rate</th>
+        <th scope="col" class="text-center">Status</th>
       </tr>
     </thead>
     <tbody
@@ -26,12 +34,36 @@
               {{ rowData.value.rowNo }}
             </div>
           </th>
-          <td class="col-md">
-            {{ rowData.value.first }}
+          <td class="col-xl">
+            <!-- CURRENCY -->
+            USD
+            <!-- <dl class="row">
+              <dt class="col-sm-6">Currency From:</dt>
+              <dd class="col-sm-6">USD</dd>
+              <dt class="col-sm-6">Currency To:</dt>
+              <dd class="col-sm-6">USD</dd>
+              <dt class="col-sm-6">Current Hour TR Rate:</dt>
+              <dd class="col-sm-6">4.20010100 | 18/04/2022 09:00:00 AM</dd>
+            </dl> -->
           </td>
-          <td class="col-md">{{ rowData.value.last }}</td>
+          <td class="col-md">MYR</td>
+          <td class="col-md">4.20010100 | 18/04/2022 09:00:00 AM</td>
           <td class="col-md">
-            {{ rowData.value.handle }}
+            4.20010100 +2.5315% <br />
+            4.20010100 +2.5315%
+          </td>
+          <td class="col-md">4.20010100 +2.5315%</td>
+          <td class="col-md">4.20010100 +2.5315%</td>
+          <td class="col-md">
+            <button class="btn btn-danger mb-2">Compare to TR</button>
+            <button class="btn btn-danger mb-2">Compare to WACC</button>
+            <button class="btn btn-danger mb-2">Initialize Price</button>
+          </td>
+          <td class="col-md">Merchant Trade: 426</td>
+          <td class="col-md">4.1000000</td>
+          <td class="col-md">4.1000000</td>
+          <td class="col-md">
+            <span>Active</span>
           </td>
         </tr>
       </ng-container>
