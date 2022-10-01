@@ -38,7 +38,7 @@ export class TableComponent implements OnInit {
   }
 
   onRowDropped(event: CdkDragDrop<string[]>) {
-    const arr = this.dynamicRowList;
+    const arr = this.dynamicRowList.controls;
     moveItemInArray(arr, event.previousIndex, event.currentIndex);
   }
 
