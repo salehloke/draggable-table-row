@@ -19,17 +19,16 @@
         formArrayName="dynamicRowList"
         *ngFor="let rowData of dynamicRowList.value; let i = index"
       >
+        <!-- {{ rowData | json }} -->
         <!-- form group name is the index per each iteration -->
-        {{ rowData | json }}
-        <form [formGroupName]="i" cdkDrag>
-          <tr>
-            test
+        <tr [formGroupName]="i" cdkDrag>
+          <ng-container>
             <th scope="row">{{ rowData.rowNo }}</th>
             <td>{{ rowData.first }}</td>
             <td>Otto</td>
             <td>@mdo</td>
-          </tr>
-        </form>
+          </ng-container>
+        </tr>
       </ng-container>
     </tbody>
   </table>
