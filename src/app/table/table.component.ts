@@ -21,7 +21,15 @@ export class TableComponent implements OnInit {
       last: ['loke'],
       handle: ['@salehloke'],
     });
+    const row2 = this.fb.group({
+      id: ['_'],
+      rowNo: [2],
+      first: ['Jacob'],
+      last: ['Thornton'],
+      handle: ['@fat'],
+    });
     this.dynamicRowList.push(row1);
+    this.dynamicRowList.push(row2);
   }
 
   onRowDropped(element: any) {

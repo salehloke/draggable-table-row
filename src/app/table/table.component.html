@@ -10,9 +10,9 @@
       </tr>
     </thead>
     <tbody cdkDropList (cdkDropListDropped)="onRowDropped($event)">
-      {{
+      <!-- {{
         dynamicRowList.value | json
-      }}
+      }} -->
       <ng-container
         formArrayName="dynamicRowList"
         *ngFor="let rowData of dynamicRowList.value; let i = index"
