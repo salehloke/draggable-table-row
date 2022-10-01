@@ -3,18 +3,19 @@
   <table class="table">
     <thead>
       <tr>
+        <th scope="col" class="text-center"></th>
         <th scope="col" class="text-center">#</th>
-        <th scope="col" class="text-center">Currency From</th>
-        <th scope="col" class="text-center">Currency To</th>
+        <th scope="col" class="text-center">Details</th>
+        <!-- <th scope="col" class="text-center">Currency To</th>
         <th scope="col" class="text-center">Current Hour TR Rate</th>
         <th scope="col" class="text-center">Low / Hi cost</th>
         <th scope="col" class="text-center">WACC</th>
         <th scope="col" class="text-center">Breakeven</th>
-        <th scope="col" class="text-center">Rules</th>
         <th scope="col" class="text-center">Competitor</th>
-        <th scope="col" class="text-center">Prev. Rate</th>
+        <th scope="col" class="text-center">Prev. Rate</th> -->
+        <th scope="col" class="text-center">Rules</th>
         <th scope="col" class="text-center">Quoted Rate</th>
-        <th scope="col" class="text-center">Status</th>
+        <th scope="col" class="text-center">Action</th>
       </tr>
     </thead>
     <tbody
@@ -31,40 +32,51 @@
           <th class="col-xs">
             <div class="drag-handle">
               <ng-container [ngTemplateOutlet]="dragHandleTmpl"> </ng-container>
-              {{ rowData.value.rowNo }}
             </div>
           </th>
+          <th class="col-xs text-center">
+            {{ rowData.value.rowNo }}
+          </th>
           <td class="col-xl">
-            <!-- CURRENCY -->
-            USD
-            <!-- <dl class="row">
-              <dt class="col-sm-6">Currency From:</dt>
+            <dl class="row">
+              <!-- CURRENCY FROM-->
+              <dt class="col-md-5">Currency From:</dt>
               <dd class="col-sm-6">USD</dd>
-              <dt class="col-sm-6">Currency To:</dt>
+              <!-- CURRENCY TO-->
+              <dt class="col-md-5">Currency To:</dt>
               <dd class="col-sm-6">USD</dd>
-              <dt class="col-sm-6">Current Hour TR Rate:</dt>
+              <!-- TR RATE-->
+              <dt class="col-md-5">TR Rate:</dt>
               <dd class="col-sm-6">4.20010100 | 18/04/2022 09:00:00 AM</dd>
-            </dl> -->
+              <!-- LOW COST-->
+              <dt class="col-md-5">Low Cost:</dt>
+              <dd class="col-sm-6">4.20010100 +2.5315%</dd>
+              <!-- HI COST-->
+              <dt class="col-md-5">Hi Cost:</dt>
+              <dd class="col-sm-6">4.20010100 +2.6404%</dd>
+              <!-- WACC-->
+              <dt class="col-md-5">WACC:</dt>
+              <dd class="col-sm-6">4.20010100 +2.5315%</dd>
+              <!-- BREAKEVEN-->
+              <dt class="col-md-5">Breakeven:</dt>
+              <dd class="col-sm-6">4.20010100 +2.5315%</dd>
+              <!-- COMPETITOR-->
+              <dt class="col-md-5">Competitor:</dt>
+              <dd class="col-sm-6">MerchanTrade: 426</dd>
+              <!-- PREV. RATE-->
+              <dt class="col-md-5">Prev. Rate:</dt>
+              <dd class="col-sm-6">4.10000000</dd>
+              <!-- STATUS-->
+              <dt class="col-md-5">Status:</dt>
+              <dd class="col-sm-6">Active</dd>
+            </dl>
           </td>
-          <td class="col-md">MYR</td>
-          <td class="col-md">4.20010100 | 18/04/2022 09:00:00 AM</td>
-          <td class="col-md">
-            4.20010100 +2.5315% <br />
-            4.20010100 +2.5315%
-          </td>
-          <td class="col-md">4.20010100 +2.5315%</td>
-          <td class="col-md">4.20010100 +2.5315%</td>
-          <td class="col-md">
+          <td class="col-xs">
             <button class="btn btn-danger mb-2">Compare to TR</button>
-            <button class="btn btn-danger mb-2">Compare to WACC</button>
+            <button class="btn btn-secondary mb-2">Compare to WACC</button>
             <button class="btn btn-danger mb-2">Initialize Price</button>
           </td>
-          <td class="col-md">Merchant Trade: 426</td>
-          <td class="col-md">4.1000000</td>
-          <td class="col-md">4.1000000</td>
-          <td class="col-md">
-            <span>Active</span>
-          </td>
+          <td class="col-xs">4.1000000</td>
         </tr>
       </ng-container>
     </tbody>
