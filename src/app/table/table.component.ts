@@ -1,5 +1,6 @@
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-table',
@@ -7,6 +8,7 @@ import { FormArray, FormBuilder } from '@angular/forms';
   styleUrls: ['./table.component.css'],
 })
 export class TableComponent implements OnInit {
+  mainForm: FormGroup;
   dynamicRowList;
 
   constructor(private fb: FormBuilder) {}
@@ -28,12 +30,16 @@ export class TableComponent implements OnInit {
       last: ['Thornton'],
       handle: ['@fat'],
     });
+    this.mainForm = this.fb.group({
+      dynamicRowList: this.dynamicRowList,
+    });
     this.dynamicRowList.push(row1);
     this.dynamicRowList.push(row2);
   }
 
-  onRowDropped(element: any) {
-    console.log('dropped:', element);
+  onRowDropped(event: CdkDragDrop<string[]>) {
+    const arr = this.dynamicRowList;
+    moveItemInArray(arr, event.previousIndex, event.currentIndex);
   }
 
   get tableList() {

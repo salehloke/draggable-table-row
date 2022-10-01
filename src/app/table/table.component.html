@@ -9,37 +9,42 @@
         <th scope="col">Handle</th>
       </tr>
     </thead>
-    <tbody cdkDropList (cdkDropListDropped)="onRowDropped($event)">
-      <!-- {{
-        dynamicRowList.value | json
-      }} -->
+    <tbody>
       <ng-container
-        [formArray]="dynamicRowList"
-        *ngFor="let rowData of dynamicRowList.value; let i = index"
+        [formGroup]="mainForm"
+        cdkDropList
+        (cdkDropListDropped)="onRowDropped($event)"
       >
-        <tr [formGroupName]="i" cdkDrag>
-          {{
-            rowData | json
-          }}
-          test
-          <th scope="row">{{ rowData.rowNo }}</th>
-          <td>{{ rowData.first }}</td>
-          <td>Otto</td>
-          <td>@mdo</td>
+        <!-- when using form array, it need to be nested inside form group to be able to access through template using formArrayName -->
+        <ng-container
+          formArrayName="dynamicRowList"
+          *ngFor="let rowData of dynamicRowList.value; let i = index"
+        >
+          <!-- form group name is the index per each iteration -->
+          <tr [formGroupName]="i" cdkDrag>
+            {{
+              rowData | json
+            }}
+            test
+            <th scope="row">{{ rowData.rowNo }}</th>
+            <td>{{ rowData.first }}</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+        </ng-container>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
         </tr>
       </ng-container>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr>
     </tbody>
   </table>
 </div>
