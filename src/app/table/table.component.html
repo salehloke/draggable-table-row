@@ -1,6 +1,6 @@
 <div class="container">
   <h1 class="h1">Dynamic Row Table</h1>
-  <table class="table">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th scope="col" class="text-center"></th>
@@ -77,6 +77,25 @@
             <button class="btn btn-danger mb-2">Initialize Price</button>
           </td>
           <td class="col-xs">4.1000000</td>
+          <td class="col-xs">
+            <div ngbDropdown container="body">
+              <button
+                type="button"
+                class="btn btn-outline-primary btn-sm"
+                ngbDropdownToggle
+              >
+                Actions
+              </button>
+              <div ngbDropdownMenu>
+                <button ngbDropdownItem>Edit</button>
+                <button ngbDropdownItem>Duplicate</button>
+                <button ngbDropdownItem>Move</button>
+                <div class="dropdown-divider"></div>
+                <button ngbDropdownItem>Delete</button>
+              </div>
+            </div>
+            <small class="text-muted">Dropdown uses container "body"</small>
+          </td>
         </tr>
       </ng-container>
     </tbody>
