@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormArray, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-table',
@@ -26,5 +26,9 @@ export class TableComponent implements OnInit {
 
   onRowDropped(element: any) {
     console.log('dropped:', element);
+  }
+
+  get tableList() {
+    return this.dynamicRowList as FormArray;
   }
 }

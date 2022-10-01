@@ -10,25 +10,20 @@
       </tr>
     </thead>
     <tbody cdkDropList (cdkDropListDropped)="onRowDropped($event)">
-      <div
+      {{
+        dynamicRowList.value | json
+      }}
+      <ng-container
         formArrayName="dynamicRowList"
-        *ngFor="let element of dynamicRowList; let i = index"
+        *ngFor="let row of dynamicRowList.value; let i = index"
       >
         <tr cdkDrag>
-          <th scope="row">1</th>
-          <td>Mark</td>
+          <th scope="row">{{ row.rowNo }}</th>
+          <td>{{ row.first }}</td>
           <td>Otto</td>
           <td>@mdo</td>
         </tr>
-      </div>
-      <span>
-        <tr cdkDrag>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-      </span>
+      </ng-container>
       <tr>
         <th scope="row">2</th>
         <td>Jacob</td>
