@@ -10,8 +10,8 @@
       </tr>
     </thead>
     <tbody cdkDropList (cdkDropListDropped)="onRowDropped($event)">
-      <ng-container
-        formArrayName="questionList"
+      <div
+        formArrayName="dynamicRowList"
         *ngFor="let element of dynamicRowList; let i = index"
       >
         <tr cdkDrag>
@@ -20,7 +20,7 @@
           <td>Otto</td>
           <td>@mdo</td>
         </tr>
-      </ng-container>
+      </div>
       <span>
         <tr cdkDrag>
           <th scope="row">1</th>
