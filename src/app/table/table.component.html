@@ -14,20 +14,77 @@
       cdkDropList
       (cdkDropListDropped)="onRowDropped($event)"
     >
-      <!-- when using form array, it need to be nested inside form group to be able to access through template using formArrayName -->
-      <ng-container
-        formArrayName="dynamicRowList"
-        *ngFor="let rowData of dynamicRowList.controls; let i = index"
-      >
-        <!-- {{ rowData | json }} -->
-        <!-- form group name is the index per each iteration -->
-        <tr cdkDragLockAxis="y" class="draggable" cdkDrag [formGroupName]="i">
-          <th scope="row">{{ rowData.value.rowNo }}</th>
-          <td scope="row">{{ rowData.value.first }}</td>
-          <td>{{ rowData.value.last }}</td>
-          <td>{{ rowData.value.handle }}</td>
+      <ng-container formArrayName="dynamicRowList">
+        <tr
+          *ngFor="let rowData of dynamicRowList.controls; let i = index"
+          cdkDrag
+          cdkDragLockAxis="y"
+        >
+          <th class="col-xs">
+            <div class="drag-handle">
+              <ng-container [ngTemplateOutlet]="dragHandleTmpl"> </ng-container>
+              {{ rowData.value.rowNo }}
+            </div>
+          </th>
+          <td class="col-md">
+            {{ rowData.value.first }}
+          </td>
+          <td class="col-md">{{ rowData.value.last }}</td>
+          <td class="col-md">
+            {{ rowData.value.handle }}
+          </td>
         </tr>
       </ng-container>
     </tbody>
+    <tbody formArrayName="dynamicRowList">
+      <!-- when using form array, it need to be nested inside form group to be able to access through template using formArrayName -->
+      <!-- <ng-container> -->
+      <!-- form group name is the index per each iteration -->
+      <tr
+        *ngFor="let rowData of dynamicRowList.controls; let i = index"
+        cdkDragLockAxis="y"
+        class="example-box"
+        cdkDrag
+      >
+        {{
+          rowData | json
+        }}
+        <form [formGroupName]="i">
+          <th>
+            <div class="drag-handle">
+              <!-- <ng-container [ngTemplateOutlet]="dragHandleTmpl"> </ng-container> -->
+            </div>
+            {{ rowData.value.rowNo }}
+          </th>
+          <td>{{ rowData.value.first }}</td>
+          <td>{{ rowData.value.last }}</td>
+          <td>{{ rowData.value.handle }}</td>
+        </form>
+      </tr>
+      <!-- </ng-container> -->
+    </tbody>
+    <div
+      [formGroup]="mainForm"
+      cdkDropList
+      class="example-list"
+      (cdkDropListDropped)="onRowDropped($event)"
+    ></div>
   </table>
 </div>
+
+<ng-template #dragHandleTmpl>
+  <svg
+    class="bi bi-list handle"
+    width="1em"
+    height="1em"
+    viewBox="0 0 16 16"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fill-rule="evenodd"
+      d="M2.5 11.5A.5.5 0 013 11h10a.5.5 0 010 1H3a.5.5 0 01-.5-.5zm0-4A.5.5 0 013 7h10a.5.5 0 010 1H3a.5.5 0 01-.5-.5zm0-4A.5.5 0 013 3h10a.5.5 0 010 1H3a.5.5 0 01-.5-.5z"
+      clip-rule="evenodd"
+    />
+  </svg>
+</ng-template>
