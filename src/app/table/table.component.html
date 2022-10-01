@@ -4,6 +4,7 @@
     <thead>
       <tr>
         <th scope="col" class="text-center"></th>
+        <th scope="col" class="text-center">select</th>
         <th scope="col" class="text-center">#</th>
         <th scope="col" class="text-center">Details</th>
         <!-- <th scope="col" class="text-center">Currency To</th>
@@ -29,62 +30,70 @@
           cdkDrag
           cdkDragLockAxis="y"
         >
+          <!-- drag handle -->
           <th class="col-xs align-middle">
             <div class="drag-handle">
               <ng-container [ngTemplateOutlet]="dragHandleTmpl"> </ng-container>
             </div>
           </th>
+          <!-- select -->
+          <th class="col-sm text-center align-middle">
+            <input type="checkbox" />
+          </th>
+          <!-- # -->
           <th class="col-sm text-center align-middle">
             {{ rowData.value.rowNo }}
           </th>
           <td class="col-xl">
             <dl class="row">
               <!-- CURRENCY FROM-->
-              <dt class="col-md-5 pb-0 mb-0">Currency From:</dt>
-              <dd class="col-sm-6">USD</dd>
+              <dt class="col-md-5 col-xl-3 pb-0 mb-0">Currency From:</dt>
+              <dd class="col-sm-6 col-xl-9">USD</dd>
               <!-- CURRENCY TO-->
-              <dt class="col-md-5">Currency To:</dt>
-              <dd class="col-sm-6">USD</dd>
+              <dt class="col-md-5 col-xl-3">Currency To:</dt>
+              <dd class="col-sm-6 col-xl-9">USD</dd>
               <!-- TR RATE-->
-              <dt class="col-md-5">TR Rate:</dt>
-              <dd class="col-sm-6">4.20010100 | 18/04/2022 09:00:00 AM</dd>
+              <dt class="col-md-5 col-xl-3">TR Rate:</dt>
+              <dd class="col-sm-6 col-xl-9">
+                4.20010100 | 18/04/2022 09:00:00 AM
+              </dd>
               <!-- LOW COST-->
-              <dt class="col-md-5">Low Cost:</dt>
-              <dd class="col-sm-6">
+              <dt class="col-md-5 col-xl-3">Low Cost:</dt>
+              <dd class="col-sm-6 col-xl-9">
                 4.20010100
                 <br />
                 <span class="alert alert-danger p-0">+2.5315%</span>
               </dd>
               <!-- HI COST-->
-              <dt class="col-md-5">Hi Cost:</dt>
-              <dd class="col-sm-6">
+              <dt class="col-md-5 col-xl-3">Hi Cost:</dt>
+              <dd class="col-sm-6 col-xl-9">
                 4.20010100
                 <br />
                 <span class="alert alert-success p-0">+2.5315%</span>
               </dd>
               <!-- WACC-->
-              <dt class="col-md-5">WACC:</dt>
-              <dd class="col-sm-6">
+              <dt class="col-md-5 col-xl-3">WACC:</dt>
+              <dd class="col-sm-6 col-xl-9">
                 4.20010100
                 <br />
                 <span class="alert alert-success p-0">+2.5315%</span>
               </dd>
               <!-- BREAKEVEN-->
-              <dt class="col-md-5">Breakeven:</dt>
-              <dd class="col-sm-6">
+              <dt class="col-md-5 col-xl-3">Breakeven:</dt>
+              <dd class="col-sm-6 col-xl-9">
                 4.20010100
                 <br />
                 <span class="alert alert-success p-0">+2.5315%</span>
               </dd>
               <!-- COMPETITOR-->
-              <dt class="col-md-5">Competitor:</dt>
-              <dd class="col-sm-6">MerchanTrade: 426</dd>
+              <dt class="col-md-5 col-xl-3">Competitor:</dt>
+              <dd class="col-sm-6 col-xl-9">MerchanTrade: 426</dd>
               <!-- PREV. RATE-->
-              <dt class="col-md-5">Prev. Rate:</dt>
-              <dd class="col-sm-6">4.10000000</dd>
+              <dt class="col-md-5 col-xl-3">Prev. Rate:</dt>
+              <dd class="col-sm-6 col-xl-9">4.10000000</dd>
               <!-- STATUS-->
-              <dt class="col-md-5">Status:</dt>
-              <dd class="col-sm-6">Active</dd>
+              <dt class="col-md-5 col-xl-3">Status:</dt>
+              <dd class="col-sm-6 col-xl-9">Active</dd>
             </dl>
           </td>
           <td class="col-xs align-middle">
