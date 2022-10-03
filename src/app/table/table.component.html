@@ -4,7 +4,11 @@
     <thead>
       <tr>
         <th scope="col" class="text-center"></th>
-        <th scope="col" class="text-center">select</th>
+        <th scope="col" class="text-center">
+          <!-- select -->
+          <input type="checkbox" />
+          select
+        </th>
         <th scope="col" class="text-center">#</th>
         <th scope="col" class="text-center">Details</th>
         <!-- <th scope="col" class="text-center">Currency To</th>
@@ -15,8 +19,9 @@
         <th scope="col" class="text-center">Competitor</th>
         <th scope="col" class="text-center">Prev. Rate</th> -->
         <th scope="col" class="text-center">Rules</th>
+        <th scope="col" class="text-center">Prev Rate</th>
         <th scope="col" class="text-center">Quoted Rate</th>
-        <th scope="col" class="text-center">Action</th>
+        <th scope="col" class="text-center">Active Status</th>
       </tr>
     </thead>
     <tbody
@@ -101,27 +106,39 @@
             <button class="btn btn-secondary mb-2">Compare to WACC</button>
             <button class="btn btn-danger mb-2">Initialize Price</button>
           </td>
-          <td class="col-sm align-middle">
+          <td class="col-sm align-middle">4.20000000</td>
+          <td class="col-lg align-middle">
             <input type="number" value="4.10000000" />
+            <div class="row mx-1">
+              <span class="alert alert-danger my-1 py-0 px-1">
+                <em class="">
+                  <small>compare to TR: 5.4043%</small>
+                </em>
+              </span>
+            </div>
+            <div class="row mx-1">
+              <span class="alert alert-success my-1 py-0 px-1">
+                <em class="text-success">
+                  <small>compare to WACC: 5.4043%</small>
+                </em>
+              </span>
+            </div>
+            <div class="mt-5 text-center">
+              <button class="btn btn-primary mt-2">Get Prev Rate</button>
+            </div>
           </td>
           <td class="col-xs align-middle">
-            <div ngbDropdown container="body">
-              <button
-                type="button"
-                class="btn btn-outline-primary btn-sm"
-                ngbDropdownToggle
+            <div class="form-check form-switch">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="flexSwitchCheckDefault"
+              />
+              <label class="form-check-label" for="flexSwitchCheckDefault"
+                >Active</label
               >
-                Actions
-              </button>
-              <div ngbDropdownMenu>
-                <button ngbDropdownItem>Edit</button>
-                <button ngbDropdownItem>Duplicate</button>
-                <button ngbDropdownItem>Move</button>
-                <div class="dropdown-divider"></div>
-                <button ngbDropdownItem>Delete</button>
-              </div>
             </div>
-            <small class="text-muted">Available actions listed here</small>
           </td>
         </tr>
       </ng-container>
