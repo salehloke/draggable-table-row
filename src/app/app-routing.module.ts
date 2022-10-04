@@ -5,11 +5,16 @@ import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { BasicFormComponent } from './basic-form/basic-form.component';
 import { TableComponent } from './table/table.component';
+import { AddFormComponent } from './add-form/add-form.component';
 
 const routes: Routes = [
   {
     path: '',
     component: TableComponent,
+  },
+  {
+    path: 'add-form',
+    component: AddFormComponent,
   },
 ];
 
