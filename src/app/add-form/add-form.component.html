@@ -13,6 +13,13 @@
         <tbody>
           <tr>
             <td>
+              <!-- <ng-select
+                [items]="currencies"
+                bindLabel="ccurrency"
+                bindValue="currency"
+                [(ngModel)]="selectedCurrencyFrom"
+              >
+              </ng-select> -->
               <select name="cars" id="cars">
                 <option value="volvo">USD</option>
                 <option value="saab">MYR</option>
@@ -25,6 +32,17 @@
                 <option value="saab">MYR</option>
                 <option value="mercedes">EUR</option>
               </select>
+            </td>
+            <td>
+              <select name="cars" id="cars">
+                <option value="volvo">Package USD: FX 101</option>
+                <option value="volvo">Package USD: FX 102</option>
+                <option value="volvo">Package USD: FX 103</option>
+                <option value="volvo">Package USD: FX 104</option>
+              </select>
+            </td>
+            <td>
+              <button>Add</button>
             </td>
           </tr>
         </tbody>

@@ -10,8 +10,9 @@ export class AddFormComponent implements OnInit {
   constructor(private _location: Location) {}
 
   ngOnInit() {}
-  selectedCurrencyFrom = '';
-  
+
+  selectedCurrencyFrom: string;
+
   currencies = [
     { id: 1, currency: 'USD' },
     { id: 2, currency: 'MYR' },
