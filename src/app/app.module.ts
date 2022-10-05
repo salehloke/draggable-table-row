@@ -10,7 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CommonModule } from '@angular/common';
 import { TableComponent } from './table/table.component';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { addCurrencyPairReducer } from './add-form/state/add-form.reducer';
+import { currencyPairReducer } from './add-form/state/add-form.reducer';
 
 @NgModule({
   imports: [
@@ -21,7 +21,7 @@ import { addCurrencyPairReducer } from './add-form/state/add-form.reducer';
     ReactiveFormsModule,
     AppRoutingModule,
     NgSelectModule,
-    StoreModule.forRoot({ addCurrencyPairing: addCurrencyPairReducer }),
+    StoreModule.forRoot({ addCurrencyPairing: currencyPairReducer }),
   ],
   declarations: [AppComponent, HelloComponent, TableComponent],
   bootstrap: [AppComponent],

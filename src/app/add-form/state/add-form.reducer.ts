@@ -1,5 +1,5 @@
 import { createReducer } from '@ngrx/store';
-import { addCurrencyPair } from './add-form.action';
+import { addCurrencyPair, removeCurrencyPair } from './add-form.action';
 
 export interface AddCurrencyPairState {
   currencyPairingList: [];
@@ -13,11 +13,15 @@ export const initialState: AddCurrencyPairState = {
   status: 'pending',
 };
 
-export const addCurrencyPairReducer = createReducer(
+export const currencyPairReducer = createReducer(
   // supply initialState
   initialState,
   on(addCurrencyPair, (state, { content }) => ({
     ...state,
-    currencyPairingList: [state.currencyPairingList, {}],
+    currencyPairingList: [state.currencyPairingList, { content: content }],
+  })),
+  on(removeCurrencyPair, (state, { content }) => ({
+    ...state,
+    currencyPairingList: [state.currencyPairingList, { content: content }],
   }))
 );
