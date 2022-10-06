@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { Store } from '@ngrx/store';
+import { addCurrencyPair } from './state/add-form.action';
+import { selectAllList } from './state/add-form.selectors';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-add-form',
@@ -7,7 +11,12 @@ import { Location } from '@angular/common';
   styleUrls: ['./add-form.component.css'],
 })
 export class AddFormComponent implements OnInit {
-  constructor(private _location: Location) {}
+  currencyPairings$: BehaviorSubject<any[]> = new BehaviorSubject([]);
+  currencyPairingsStore$: Observable<any[]>;
+
+  constructor(private _location: Location, private store: Store) {
+    this.currencyPairingsStore$ = this.store.select(selectAllList);
+  }
 
   ngOnInit() {}
 
@@ -17,6 +26,13 @@ export class AddFormComponent implements OnInit {
     { id: 1, currency: 'USD' },
     { id: 2, currency: 'MYR' },
   ];
+
+  addCurrencyPairings() {
+    console.log();
+    this.store.dispatch(
+      addCurrencyPair({ currencyFrom: 'usd', currencyTo: 'myr' })
+    );
+  }
 
   backClicked() {
     this._location.back();
