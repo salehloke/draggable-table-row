@@ -14,11 +14,11 @@ export class AddFormComponent implements OnInit {
   currencyPairings$: BehaviorSubject<any[]> = new BehaviorSubject([]);
   currencyPairingsStore$: Observable<any[]>;
 
-  constructor(private _location: Location, private store: Store) {
+  constructor(private _location: Location, private store: Store) {}
+
+  ngOnInit() {
     this.currencyPairingsStore$ = this.store.select(selectAllList);
   }
-
-  ngOnInit() {}
 
   selectedCurrencyFrom: string;
 

@@ -11,7 +11,7 @@
           <th>Action</th>
         </thead>
         <tbody>
-          <tr *ngFor="let item of currencyPairings$ | async">
+          <tr *ngFor="let item of currencyPairings$.value">
             <td>
               <!-- <ng-select
                 [items]="currencies"

@@ -1,5 +1,5 @@
-import { createReducer } from '@ngrx/store';
-import { on } from '@ngrx/store/src/reducer_creator';
+import { createReducer, on } from '@ngrx/store';
+// import { on } from '@ngrx/store';
 import { addCurrencyPair, removeCurrencyPair } from './add-form.action';
 
 export interface AddCurrencyPairState {
