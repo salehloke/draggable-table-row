@@ -21,7 +21,7 @@ import { currencyPairReducer } from './add-form/state/add-form.reducer';
     ReactiveFormsModule,
     AppRoutingModule,
     NgSelectModule,
-    StoreModule.forRoot({ addCurrencyPairing: currencyPairReducer }),
+    StoreModule.forRoot({ currencyPairs: currencyPairReducer }),
   ],
   declarations: [AppComponent, HelloComponent, TableComponent],
   bootstrap: [AppComponent],

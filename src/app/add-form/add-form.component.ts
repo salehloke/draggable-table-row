@@ -11,13 +11,13 @@ import { BehaviorSubject, Observable } from 'rxjs';
   styleUrls: ['./add-form.component.css'],
 })
 export class AddFormComponent implements OnInit {
-  currencyPairings$: BehaviorSubject<any[]> = new BehaviorSubject([]);
-  currencyPairingsStore$: Observable<any[]>;
+  currencyPairingsStore$: Observable<any[]> = this.store.select(selectAllList);
 
   constructor(private _location: Location, private store: Store) {}
 
   ngOnInit() {
-    this.currencyPairingsStore$ = this.store.select(selectAllList);
+    // this.currencyPairingsStore$ = this.store.select(selectAllList);
+    console.log('currencyPairingsStore$', this.currencyPairingsStore$);
   }
 
   selectedCurrencyFrom: string;
