@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { addCurrencyPair, loadCurrencyPairs } from './state/add-form.action';
 import { selectAllCurrencyPairs } from './state/add-form.selectors';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { CurrencyPairState } from './state/add-form.reducer';
 
 @Component({
   selector: 'app-add-form',
@@ -11,16 +12,24 @@ import { BehaviorSubject, Observable } from 'rxjs';
   styleUrls: ['./add-form.component.css'],
 })
 export class AddFormComponent implements OnInit {
-  currencyPairingsStore$: Observable<any[]> = this.store.select(
+  public currencyPairs$: Observable<any[]> = this.store.select(
     selectAllCurrencyPairs
   );
 
-  constructor(private _location: Location, private store: Store) {}
+  constructor(
+    private _location: Location,
+    private store: Store<{ currencyPairs: CurrencyPairState }>
+  ) {
+    // this.currencyPairs$ = store.pipe(select(selectAllCurrencyPairs));
+    // this.currencyPairs$ = store.select('currencyPairs');
+  }
 
   ngOnInit() {
     // this.currencyPairingsStore$ = this.store.select(selectAllList);
     this.store.dispatch(loadCurrencyPairs());
-    console.log('currencyPairingsStore$', this.currencyPairingsStore$);
+    console.log('currencyPairingsStore$', this.currencyPairs$);
+    console.log('currencyPairs$', this.currencyPairs$);
+    // this.currencyPairs$ = this.store.select('currencyPairs');
   }
 
   selectedCurrencyFrom: string;
@@ -31,9 +40,9 @@ export class AddFormComponent implements OnInit {
   ];
 
   addCurrencyPairings() {
-    console.log();
+    console.log('currencyPairs$', this.currencyPairs$);
     this.store.dispatch(
-      addCurrencyPair({ currencyFrom: 'usd', currencyTo: 'myr' })
+      addCurrencyPair({ currencyFrom: 'USD', currencyTo: 'MYR' })
     );
   }
 

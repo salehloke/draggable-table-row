@@ -18,8 +18,39 @@ export class CurrencyPairsEffects {
     private currencyPairsService: CurrencyPairsService
   ) {}
 
-  @Effect()
-  loadcurrencyPairs$ = () =>
+  // @Effect()
+  // loadcurrencyPairs$ = () =>
+  //   this.actions$.pipe(
+  //     ofType(loadCurrencyPairs),
+  //     switchMap(() =>
+  //       // call the get Curerncy pairs method, convert it to an observable
+  //       from(this.currencyPairsService.getCurrencyPairsDummyData()).pipe(
+  //         map((currencyPairs) =>
+  //           loadCurrencyPairsSuccess({ currencyPairs: currencyPairs })
+  //         ),
+  //         catchError((error) => of(loadCurrencyPairsFailure))
+  //       )
+  //     )
+  //   );
+
+  //   loadPairs$ = createEffect(
+  //     () =>
+  //       this.actions$.pipe(
+  //         ofType(loadCurrencyPairs),
+  //         switchMap(() =>
+  //           // call the get Curerncy pairs method, convert it to an observable
+  //           from(this.currencyPairsService.getCurrencyPairsDummyData()).pipe(
+  //             map((currencyPairs) =>
+  //               loadCurrencyPairsSuccess({ currencyPairs: currencyPairs })
+  //             ),
+  //             catchError((error) => of(loadCurrencyPairsFailure))
+  //           )
+  //         )
+  //       ))
+  // )
+
+  // Run this code when a loadTodos action is dispatched
+  loadPairs$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadCurrencyPairs),
       switchMap(() =>
@@ -31,14 +62,6 @@ export class CurrencyPairsEffects {
           catchError((error) => of(loadCurrencyPairsFailure))
         )
       )
-    );
-
-  // @Effect()
-  // loadPairs$ = this.actions$.pipe(
-  //   ofType(loadCurrencyPairs),
-  //   mergeMap(() => this.currencyPairsService.getCurrencyPairsHTTP()
-  //   .pipe(
-  //     map(currencyPairs => ({type: }))
-  //     ))
-  // );
+    )
+  );
 }

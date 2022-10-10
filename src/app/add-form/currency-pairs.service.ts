@@ -6,14 +6,14 @@ import { CurrencyPair } from './state/add-form.reducer';
 @Injectable({ providedIn: 'root' }) // TODO: check this syntax
 export class CurrencyPairsService {
   private storageInitialised = false;
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
-  getCurrencyPairsHTTP() {
-    // if (!this.storageInitialised) await this.storage.create();
-    // return (await this.storage.get('currencyPairingList')) || [];
+  // getCurrencyPairsHTTP() {
+  //   // if (!this.storageInitialised) await this.storage.create();
+  //   // return (await this.storage.get('currencyPairingList')) || [];
 
-    return this.http.get('/currencyPairs');
-  }
+  //   return this.http.get('/currencyPairs');
+  // }
 
   // async getCurrencyPairs(): Promise<CurrencyPair[]> {
   //   if (!this.storageInitialised) await this.storage.create();
