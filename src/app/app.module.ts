@@ -13,7 +13,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { currencyPairReducer } from './add-form/state/add-form.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { CurrencyPairsEffects } from './add-form/state/add-form.effects';
-
+import { IonicStorageModule } from '@ionic/storage-angular';
 @NgModule({
   imports: [
     BrowserModule,
@@ -25,6 +25,7 @@ import { CurrencyPairsEffects } from './add-form/state/add-form.effects';
     NgSelectModule,
     StoreModule.forRoot({ currencyPairs: currencyPairReducer }),
     EffectsModule.forRoot([CurrencyPairsEffects]),
+    IonicStorageModule.forRoot(),
   ],
   declarations: [AppComponent, HelloComponent, TableComponent],
   bootstrap: [AppComponent],
