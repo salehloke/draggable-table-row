@@ -6,7 +6,7 @@ import { CurrencyPair } from './state/add-form.reducer';
 @Injectable({ providedIn: 'root' }) // TODO: check this syntax
 export class CurrencyPairsService {
   private storageInitialised = false;
-  constructor(private storage: Storage, private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   getCurrencyPairsHTTP() {
     // if (!this.storageInitialised) await this.storage.create();
@@ -15,10 +15,10 @@ export class CurrencyPairsService {
     return this.http.get('/currencyPairs');
   }
 
-  async getCurrencyPairs(): Promise<CurrencyPair[]> {
-    if (!this.storageInitialised) await this.storage.create();
-    return (await this.storage.get('currencyPairingList')) || [];
-  }
+  // async getCurrencyPairs(): Promise<CurrencyPair[]> {
+  //   if (!this.storageInitialised) await this.storage.create();
+  //   return (await this.storage.get('currencyPairingList')) || [];
+  // }
 
   getCurrencyPairsDummyData(): Observable<CurrencyPair[]> {
     return new Observable((subscriber) => {
@@ -40,9 +40,9 @@ export class CurrencyPairsService {
     });
   }
 
-  async saveCurrencyPairs(currencyPairs: CurrencyPair[]) {
-    if (!this.storageInitialised) await this.storage.create();
+  // async saveCurrencyPairs(currencyPairs: CurrencyPair[]) {
+  //   if (!this.storageInitialised) await this.storage.create();
 
-    return this.storage.set('currencyPairingList', currencyPairs);
-  }
+  //   return this.storage.set('currencyPairingList', currencyPairs);
+  // }
 }
