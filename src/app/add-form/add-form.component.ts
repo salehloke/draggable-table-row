@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { addCurrencyPair } from './state/add-form.action';
-import { selectAllList } from './state/add-form.selectors';
+import { selectAllCurrencyPairs } from './state/add-form.selectors';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
@@ -11,7 +11,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
   styleUrls: ['./add-form.component.css'],
 })
 export class AddFormComponent implements OnInit {
-  currencyPairingsStore$: Observable<any[]> = this.store.select(selectAllList);
+  currencyPairingsStore$: Observable<any[]> = this.store.select(
+    selectAllCurrencyPairs
+  );
 
   constructor(private _location: Location, private store: Store) {}
 

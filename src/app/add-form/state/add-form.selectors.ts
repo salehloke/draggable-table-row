@@ -4,7 +4,7 @@ import { AddCurrencyPairState } from './add-form.reducer';
 
 export const selectPairings = (state: AppState) => state.currencyPairs;
 
-export const selectAllList = createSelector(
+export const selectAllCurrencyPairs = createSelector(
   selectPairings,
   (state: AddCurrencyPairState) => state.currencyPairingList
 );
