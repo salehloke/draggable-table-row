@@ -24,7 +24,7 @@ export class CurrencyPairsEffects {
       ofType(loadCurrencyPairs),
       switchMap(() =>
         // call the get Curerncy pairs method, convert it to an observable
-        from(this.currencyPairsService.getCurrencyPairs()).pipe(
+        from(this.currencyPairsService.getCurrencyPairsDummyData()).pipe(
           map((currencyPairs) =>
             loadCurrencyPairsSuccess({ currencyPairs: currencyPairs })
           ),
