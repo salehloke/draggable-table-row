@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { addCurrencyPair } from './state/add-form.action';
+import { addCurrencyPair, loadCurrencyPairs } from './state/add-form.action';
 import { selectAllCurrencyPairs } from './state/add-form.selectors';
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -19,6 +19,7 @@ export class AddFormComponent implements OnInit {
 
   ngOnInit() {
     // this.currencyPairingsStore$ = this.store.select(selectAllList);
+    this.store.dispatch(loadCurrencyPairs());
     console.log('currencyPairingsStore$', this.currencyPairingsStore$);
   }
 

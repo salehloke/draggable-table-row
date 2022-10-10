@@ -24,6 +24,7 @@
     "@angular/router": "^14.0.0",
     "@ng-bootstrap/ng-bootstrap": "^13.0.0",
     "@ng-select/ng-select": "^9.0.2",
+    "@ngrx/effects": "^14.3.2",
     "@ngrx/store": "latest",
     "@popperjs/core": "^2.11.5",
     "bootstrap": "^5.2.0",

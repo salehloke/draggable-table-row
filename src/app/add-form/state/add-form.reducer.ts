@@ -1,6 +1,12 @@
 import { createReducer, on } from '@ngrx/store';
 // import { on } from '@ngrx/store';
-import { addCurrencyPair, removeCurrencyPair } from './add-form.action';
+import {
+  addCurrencyPair,
+  loadCurrencyPairs,
+  removeCurrencyPair,
+  loadCurrencyPairsSuccess,
+  loadCurrencyPairsFailure,
+} from './add-form.action';
 
 export interface AddCurrencyPairState {
   currencyPairingList: CurrencyPairing[];
@@ -23,6 +29,7 @@ export interface CurrencyPairing {
 export const currencyPairReducer = createReducer(
   // supply initialState
   initialState,
+  // adding new currency pairs
   on(addCurrencyPair, (state, { currencyFrom, currencyTo }) => ({
     ...state,
     currencyPairingList: [
@@ -30,8 +37,24 @@ export const currencyPairReducer = createReducer(
       { id: Date.now().toString(), currencyFrom, currencyTo },
     ],
   })),
+  // remove currency pair
   on(removeCurrencyPair, (state, { id }) => ({
     ...state,
     currencyPairingList: state.currencyPairingList.filter((pair) => pair.id),
+  })),
+  // trigger loading
+  on(loadCurrencyPairs, (state) => ({ ...state, status: 'loading' })),
+  // handle successfull loading currency pairs
+  on(loadCurrencyPairsSuccess, (state, { currencyPairingList }) => ({
+    ...state,
+    currencyPairingList: currencyPairingList,
+    error: null,
+    status: 'success',
+  })),
+  // handle error on loading currency pairs
+  on(loadCurrencyPairsFailure, (state, { error }) => ({
+    ...state,
+    error: error,
+    status: 'error',
   }))
 );

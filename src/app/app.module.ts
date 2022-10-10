@@ -11,6 +11,8 @@ import { CommonModule } from '@angular/common';
 import { TableComponent } from './table/table.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { currencyPairReducer } from './add-form/state/add-form.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { CurrencyPairsEffects } from './add-form/state/add-form.effects';
 
 @NgModule({
   imports: [
@@ -22,6 +24,7 @@ import { currencyPairReducer } from './add-form/state/add-form.reducer';
     AppRoutingModule,
     NgSelectModule,
     StoreModule.forRoot({ currencyPairs: currencyPairReducer }),
+    EffectsModule.forRoot([CurrencyPairsEffects]),
   ],
   declarations: [AppComponent, HelloComponent, TableComponent],
   bootstrap: [AppComponent],

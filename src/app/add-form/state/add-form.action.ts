@@ -18,7 +18,7 @@ export const loadCurrencyPairsSuccess = createAction(
   props<{ currencyPairingList: CurrencyPairing[] }>()
 );
 
-export const loadTodosFailure = createAction(
+export const loadCurrencyPairsFailure = createAction(
   'Load Currency Pairs Failure',
   props<{ error: string }>()
 );
