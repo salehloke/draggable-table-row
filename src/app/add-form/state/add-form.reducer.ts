@@ -8,19 +8,19 @@ import {
   loadCurrencyPairsFailure,
 } from './add-form.action';
 
-export interface AddCurrencyPairState {
-  currencyPairingList: CurrencyPairing[];
+export interface CurrencyPairState {
+  currencyPairs: CurrencyPair[];
   error: string;
   status: 'pending' | 'loading' | 'error' | 'success';
 }
 
-export const initialState: AddCurrencyPairState = {
-  currencyPairingList: [],
+export const initialState: CurrencyPairState = {
+  currencyPairs: [],
   error: null,
   status: 'pending',
 };
 
-export interface CurrencyPairing {
+export interface CurrencyPair {
   id: string;
   currencyFrom: string;
   currencyTo: string;
@@ -32,22 +32,22 @@ export const currencyPairReducer = createReducer(
   // adding new currency pairs
   on(addCurrencyPair, (state, { currencyFrom, currencyTo }) => ({
     ...state,
-    currencyPairingList: [
-      ...state.currencyPairingList,
+    currencyPairs: [
+      ...state.currencyPairs,
       { id: Date.now().toString(), currencyFrom, currencyTo },
     ],
   })),
   // remove currency pair
   on(removeCurrencyPair, (state, { id }) => ({
     ...state,
-    currencyPairingList: state.currencyPairingList.filter((pair) => pair.id),
+    currencyPairs: state.currencyPairs.filter((pair) => pair.id),
   })),
   // trigger loading
   on(loadCurrencyPairs, (state) => ({ ...state, status: 'loading' })),
   // handle successfull loading currency pairs
-  on(loadCurrencyPairsSuccess, (state, { currencyPairingList }) => ({
+  on(loadCurrencyPairsSuccess, (state, { currencyPairs }) => ({
     ...state,
-    currencyPairingList: currencyPairingList,
+    currencyPairs: currencyPairs,
     error: null,
     status: 'success',
   })),

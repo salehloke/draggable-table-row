@@ -8,7 +8,7 @@ import {
   loadCurrencyPairsFailure,
   loadCurrencyPairsSuccess,
 } from './add-form.action';
-import { switchMap, from, catchError, mergeMap } from 'rxjs';
+import { switchMap, from, catchError, mergeMap, of, map } from 'rxjs';
 
 @Injectable()
 export class CurrencyPairsEffects {
@@ -18,7 +18,8 @@ export class CurrencyPairsEffects {
     private currencyPairsService: CurrencyPairsService
   ) {}
 
-  loadcurrencyPairs$ = createEffect(() =>
+  @Effect()
+  loadcurrencyPairs$ = () =>
     this.actions$.pipe(
       ofType(loadCurrencyPairs),
       switchMap(() =>
@@ -30,13 +31,14 @@ export class CurrencyPairsEffects {
           catchError((error) => of(loadCurrencyPairsFailure))
         )
       )
-    )
-  );
+    );
 
   // @Effect()
-  // loadPairs$ = this.actions$
-  // .pipe(
+  // loadPairs$ = this.actions$.pipe(
   //   ofType(loadCurrencyPairs),
-  //   mergeMap(()=>)
-  // )
+  //   mergeMap(() => this.currencyPairsService.getCurrencyPairsHTTP()
+  //   .pipe(
+  //     map(currencyPairs => ({type: }))
+  //     ))
+  // );
 }

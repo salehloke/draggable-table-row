@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { CurrencyPairing } from './add-form.reducer';
+import { CurrencyPair } from './add-form.reducer';
 
 export const addCurrencyPair = createAction(
   'Add Currency Pair',
@@ -15,7 +15,7 @@ export const loadCurrencyPairs = createAction('Load Currency Pairs');
 
 export const loadCurrencyPairsSuccess = createAction(
   'Load Currency Pairs Success',
-  props<{ currencyPairingList: CurrencyPairing[] }>()
+  props<{ currencyPairs: CurrencyPair[] }>()
 );
 
 export const loadCurrencyPairsFailure = createAction(

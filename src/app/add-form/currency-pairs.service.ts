@@ -1,17 +1,25 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CurrencyPairing } from './state/add-form.reducer';
+import { CurrencyPair } from './state/add-form.reducer';
 
 @Injectable({ providedIn: 'root' }) // TODO: check this syntax
 export class CurrencyPairsService {
   private storageInitialised = false;
-  constructor(private storage: Storage) {}
+  constructor(private storage: Storage, private http: HttpClient) {}
 
-  async getCurrencyPairs(): Promise<CurrencyPairing[]> {
+  getCurrencyPairsHTTP() {
+    // if (!this.storageInitialised) await this.storage.create();
+    // return (await this.storage.get('currencyPairingList')) || [];
+
+    return this.http.get('/currencyPairs');
+  }
+
+  async getCurrencyPairs(): Promise<CurrencyPair[]> {
     if (!this.storageInitialised) await this.storage.create();
     return (await this.storage.get('currencyPairingList')) || [];
   }
 
-  async saveCurrencyPairs(currencyPairs: CurrencyPairing[]) {
+  async saveCurrencyPairs(currencyPairs: CurrencyPair[]) {
     if (!this.storageInitialised) await this.storage.create();
 
     return this.storage.set('currencyPairingList', currencyPairs);

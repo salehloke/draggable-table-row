@@ -1,5 +1,5 @@
-import { AddCurrencyPairState } from './add-form/state/add-form.reducer';
+import { CurrencyPairState } from './add-form/state/add-form.reducer';
 
 export interface AppState {
-  currencyPairs: AddCurrencyPairState;
+  currencyPairs: CurrencyPairState;
 }
